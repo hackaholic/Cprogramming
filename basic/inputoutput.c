@@ -4,7 +4,7 @@ int main(){
     char c;
 
     printf("Provide some text\n");
-    c = getchar();    // getchar can only read stream from standard input
+    c = getchar();    // getchar can only read stream from standard input i.e (stdin)
     while (c != EOF) {  // read will fail when encounter EOF
         putchar(c);
         c = getchar();
