@@ -27,7 +27,13 @@ A token passed to macro can be converted to a string literal by using # before i
 #define printd(expr) printf(#expr" -> %d\n", expr) 
 
 #define aa1 "Hellow World"
+
+//The tokens passed to macros can be concatenated using operator ## called Token-Pasting operator.
 #define concat(front, back) front ## back
+
+#define swap(T, x, y) { T tmp; tmp = x; x = y; y = tmp; } 
+
+#define swap2(x, y) { typeof(x) tmp; tmp = x; x = y; y = tmp;}
 
 int main() {
     int a = 2, b = 3;
@@ -35,7 +41,7 @@ int main() {
     printf("Using Compiler Version: %li\n",  VERSION);
     printf("Current time: %s, Date: %s\n", __TIME__, __DATE__);
     
-    printf("Max of %i, %i -> %i\n", a, b, max(a, b));
+    printf("Max of a=%i, b=%i -> %i\n", a, b, max(a, b));
     printd(3/2);
     
     //Warning("I am Learning", "Good Stuff");
@@ -47,5 +53,12 @@ int main() {
 
     printf("concat(123, 456) -> %i\n", concat(123, 456));
     printf("concat(aa, 1) -> %s\n", concat(aa, 1)); // this statement will produce error if aa1 is not defined
+    
+    // swap macro with type parameter
+    swap(int, a, b);
+    printf("After swap: a=%i, b=%i\n", a, b);
+    //swap2 macro without type parameter
+    swap2(a, b);
+    printf("After swap2: a=%i, b=%i\n", a, b);
     return 0;
 }
