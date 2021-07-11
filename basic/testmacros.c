@@ -13,7 +13,7 @@
 /* variadic macros that may have a variable number of arguments;
  these are mostly useful for dealing with variadic functions
 */
-//#define Warning(...) fprintf(stdout, "%s\n", ##__VA_ARGS__)
+#define Warning(...) fprintf(stdout, "%s\n", ##__VA_ARGS__)
 
 /*The comma operator evaluates both of its operands and 
 returns the value of the one on the right-hand side. 
@@ -44,7 +44,7 @@ int main() {
     printf("Max of a=%i, b=%i -> %i\n", a, b, max(a, b));
     printd(3/2);
     
-    //Warning("I am Learning", "Good Stuff");
+    Warning("I am Learning", "Good Stuff");
     
     printf("%d\n", NosyInc1(5));  
     // Below Statement will producer error "lvalue required as increment operand"
