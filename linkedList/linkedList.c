@@ -31,6 +31,26 @@ void displayNode(struct node *head) {
     }
 }
 
+struct node *reverse(struct node *head) {
+    if (head == NULL) {
+        printf("No node to reverse");
+        return NULL;
+    }
+    else if (head->next == NULL) {
+        return head;
+    }
+    struct node *prev = NULL;
+    struct node *next = NULL;
+    struct node *cur = head; 
+    while (cur != NULL) {
+        next = cur->next;
+        cur->next = prev;
+        prev = cur;
+        cur = next;
+    }
+    return prev;
+}
+
 int main() {
      // will create linked list from array element
      int i;
@@ -40,5 +60,8 @@ int main() {
          printf("adding node: %i\n", arr[i]);
          head = addNode(head, arr[i]);
      }
+     displayNode(head);
+     head = reverse(head);
+     printf("Reversed Linked List\n");
      displayNode(head);
 }
