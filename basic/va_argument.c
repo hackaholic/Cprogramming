@@ -12,7 +12,7 @@ int sum(int i, ...) {
         i = va_arg(ap, int);
         total += i;
     }
-
+    va_end(ap);
     return total;
 }
 
