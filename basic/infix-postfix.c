@@ -70,7 +70,6 @@ void infix_to_postfix(char *arr, char *postfix) {
             push(c);
         }
     }
-    printf("ok: %i\n", is_empty());
     while(!is_empty()) {
         printf("ok2\n");
         *postfix++ = pop();
@@ -78,9 +77,10 @@ void infix_to_postfix(char *arr, char *postfix) {
 }
 
 void main() {
+    // (A+(B-C)*D)^E+F, A+B/C*(D-A)^F^H, A*B+C*D
+    
     char arr[STACK_SIZE];
     char postfix[STACK_SIZE];
-    printf("%i\n", get_precedence('a'));
     printf("Input the infix expression: ");
     scanf("%s", arr);
     printf("Entered expression: %s\n", arr);
