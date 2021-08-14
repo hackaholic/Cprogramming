@@ -4,7 +4,6 @@
 #include <sys/stat.h>
 #include <errno.h>
 
-
 #define BUFFER_SIZE 100
 
 int main(int argc, char *argv[]) {
@@ -30,7 +29,9 @@ int main(int argc, char *argv[]) {
        if(EEXIST) {
            printf("file: %s already exists\n", filename);
        }
-       exit(1);
+       else {
+           printf("Error in making Nmaed pipe\n");
+       }
    }
 
    while (1) {
