@@ -71,13 +71,17 @@ ssize_t msg_rcv(int id, struct mymsg *buf) {
     return msg_size;
 }
 
+void remove_queue(int id) {
+    msgctl(id, IPC_RMID, 0);
+}
+
 int main(int argc, char *argv[]) {
     key_t msg_queue_key;
     int msg_queue_id;
     int status;
     char filepath[MAX_PATHNAME_SIZE];
     size_t msg_size;
-    char mode[2];
+    char mode;
 
     if(argc < 3) {
         printf("Usage: binary <path> <s/r>");
@@ -103,16 +107,36 @@ int main(int argc, char *argv[]) {
         exit(1);
     }
     printf("msg_queue_id: %i\n", msg_queue_id);
-    strcpy(mode, argv[2]);
-    if (strcmp(mode, "s") == 0) {
-        msg.msg_type = 1;
-        strcpy(msg.text, "Hello World");
-        status = msg_snd(msg_queue_id, &msg);
-        printf("Msg sent...\n");
-    }
-    if (strcmp(mode, "r") == 0) {
-        msg_size = msg_rcv(msg_queue_id, &msg);
-        printf("msg: %s\n", msg.text);
-    }
+    //strcpy(mode, argv[2]);
+    mode = argv[2][0];
+    // if (strcmp(mode, "s") == 0) {
+    //     msg.msg_type = 1;
+    //     strcpy(msg.text, "Hello World");
+    //     status = msg_snd(msg_queue_id, &msg);
+    //     printf("Msg sent...\n");
+    // }
+    // if (strcmp(mode, "r") == 0) {
+    //     msg_size = msg_rcv(msg_queue_id, &msg);
+    //     printf("msg: %s\n", msg.text);
+    // }
 
+    switch (mode) {
+        case 's':
+            msg.msg_type = 1;
+            strcpy(msg.text, "Hello World");
+            status = msg_snd(msg_queue_id, &msg);
+            printf("Msg sent...\n");
+            break;
+        case 'r':
+            msg_size = msg_rcv(msg_queue_id, &msg);
+            printf("msg: %s\n", msg.text);
+            break;
+        case 'd':
+            printf("Deleting the Queue: %i\n", msg_queue_id);
+            remove_queue(msg_queue_id);
+            break;
+        default: 
+            printf("Provide the proper mode <s/r/d>");
+            break;
+    }
 }
