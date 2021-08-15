@@ -131,7 +131,7 @@ int remove_sem(int sid) {
 }
 
 void usage() {
-    printf("Usage: binary <c nsems> <l/u member> <d>\n");
+    printf("Usage: binary <key_file> <c nsems> <l/u member> <d>\n");
 }
 
 int main(int argc, char *argv[]) {
