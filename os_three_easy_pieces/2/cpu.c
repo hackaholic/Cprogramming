@@ -18,7 +18,7 @@ void spin(char *str) {
 
 int main(int argc, char *argv[]) {
     char str[MAX_CHAR];
-    if (argc < 1) {
+    if (argc < 2) {
         printf("Usage: binary <string>\n");
         exit(EXIT_FAILURE);
     }
