@@ -1,0 +1,5 @@
+total 28
+-rwxrwxrwx 1 kumars kumars 17104 Aug 19 13:06 a.out
+-rwxrwxrwx 1 kumars kumars  1000 Aug 19 13:05 exec_test.c
+-rwxrwxrwx 1 kumars kumars  1117 Aug 19 13:06 exec_test_stdout.c
+-rwxrwxrwx 1 kumars kumars     0 Aug 19 13:06 output.txt
