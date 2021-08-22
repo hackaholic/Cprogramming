@@ -26,7 +26,7 @@ void signal_handler(int sig) {
 int main() {
     char buff[MAX_BUFF];
     int nbytes;
-    int fd[2];
+    int fd[3];
     pid_t childpid;
     struct tm* tmp;
     time_t t;
