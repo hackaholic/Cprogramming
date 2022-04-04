@@ -5,6 +5,10 @@
 
 #include <stdio.h>
 #include <time.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include <error.h>
+//#include <sys/time.h>
 
 void get_time() {
     /*
@@ -61,11 +65,45 @@ void format_time(time_t t) {
 
 }
 
+void spin(int loop) {
+    time_t now;
+    sleep(1);
+    int i = 0;
+    while (1) {
+        if(i == loop){
+            break;
+        }
+        now = time(NULL);
+        printf("%i: %s", i, asctime(localtime(&now)));
+        i += 1;
+    }
+}
+
+void usage() {
+    printf("Usage: binary <loop> <u/n>\n");
+    exit(EXIT_FAILURE);
+}
+
 int main(int argc, char *argv[])
 {
-  time_t now;
+  time_t now, end;
+  now = time(NULL);
+  clock_t processor_time;
+  if( argc < 2) {
+      usage();
+  }
+  processor_time = clock();
+  //printf("sdkdk %lu\n", processor_time);
   printf("Time/Clock Practice\n");
+  
+  printf("value of CLOCKS_PER_SEC: %lu\n", CLOCKS_PER_SEC);
   get_time();
   format_time(time(NULL));
+  spin(atoi(argv[1]));
+  end = time(NULL);
+  processor_time = clock() - processor_time;
+  printf("processor Tick: %lu took %f sec\n", processor_time, ((float)processor_time)/CLOCKS_PER_SEC);
+  // double difftime(time_t time1, time_t time2)
+  printf("Total programm executime time %f sec\n", difftime(end, now));
   return 0;
 }

@@ -37,7 +37,8 @@ void get_execution_timeus(long int loop, struct timeval *t) {
 double get_execution_timens(long int loop, struct timespec *t) {
     long int i;
     struct timespec tmp;
-
+ 
+    // man clock_gettime
     clock_gettime(CLOCK_REALTIME, &t[0]);
 
     for(i=0;i<loop;i++) {
