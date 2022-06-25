@@ -4,7 +4,7 @@
 
      error:
 
-    # gcc bin_hex_dec.c
+    # gcc bin_hex_dec.c -o bin_hex_dec
     /tmp/ccgRkYN0.o: In function `hex_dec':
     bin_hex_dec.c:(.text+0x136): undefined reference to `pow'
     collect2: error: ld returned 1 exit status
