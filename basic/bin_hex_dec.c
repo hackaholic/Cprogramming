@@ -9,7 +9,7 @@
     bin_hex_dec.c:(.text+0x136): undefined reference to `pow'
     collect2: error: ld returned 1 exit status
     one need to link math lib
-    # gcc bin_hex_dec.c -lm   
+    # gcc bin_hex_dec.c -lm -o bin_hex_dec 
 */
 
 #include <stdio.h>
