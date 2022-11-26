@@ -21,4 +21,5 @@ void spin(){
 
 int main(int argc, char *argv[]) {
     spin();
+    return 0;
 }
