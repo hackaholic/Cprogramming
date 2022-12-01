@@ -20,6 +20,7 @@ int main(int argc, char * argv[]){
     unsigned long int i = 0;
 
     size = atol(*(argv+1));
+    fprintf(stdout, "process id: %i\n", getpid());
     printf("Intput size: %li\n", size);
     unsigned long int size_bytes = size*1024*1024;
     unsigned long int *my_array = malloc(size_bytes);
