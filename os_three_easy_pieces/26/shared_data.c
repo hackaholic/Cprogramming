@@ -1,7 +1,14 @@
 /*
  Author: Kumar Shubham
 
- this program show thread concurrency issue.
+ this program show thread concurrency issue( race condition)
+
+ $ gcc -g -Wall -lpthread shared_data.c
+
+ $ valgrind --tool=helgrind ./a.out
+
+ run this with vagrind and see what error does it report, does it report for race condition
+
 
 */
 
