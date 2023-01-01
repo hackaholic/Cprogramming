@@ -82,7 +82,7 @@ msubarr max_sub_array(msubarr msa, int a[]) {
     }
 }
 
-int main() {
+int main(int argc, char *argv[]) {
 
     msubarr input, res;
     int len;
