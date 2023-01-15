@@ -9,6 +9,7 @@
 #include<stdlib.h>
 #include<dirent.h>
 #include<sys/types.h>
+#include<errno.h>
 #include<time.h>
 #include<string.h>
 
@@ -17,7 +18,13 @@ void listdir(char *dirname) {
     DIR *d;
     struct dirent *d_ent;
 
-    d = opendir(dirname);
+    if((d = opendir(dirname)) == NULL) {
+        // when error occur then global varibale error is set with error code
+        printf("ERROR: %i, %s\n", errno, strerror(errno));
+        perror("ERROR");
+        exit(EXIT_FAILURE);    // The C standard specifies two constants: EXIT_SUCCESS and EXIT_FAILURE
+    }
+    
     while((d_ent = readdir(d)) != NULL) {
         printf("name: %s\n", d_ent->d_name);
         printf("inode no: %lu\n", (unsigned long) d_ent->d_ino);
@@ -26,6 +33,8 @@ void listdir(char *dirname) {
         printf("type: %i\n", d_ent->d_type);
         printf("\n");   
     }
+
+    closedir(d);
 
 }
 
