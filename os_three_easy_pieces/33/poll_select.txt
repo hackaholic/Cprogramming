@@ -1,0 +1,16 @@
+select vs poll systemcall
+
+ Select:
+
+    Select system call monitors a fixed number of file descriptors.
+    The number of file descriptors that can be monitored is limited by the constant FD_SETSIZE.
+    It uses bitmasks to represent the file descriptor sets, which can be relatively expensive in terms of memory usage.
+    It is well-suited for applications that need to monitor a small number of file descriptors.
+    Select call can't work with file descriptor more than FD_SETSIZE.
+
+Poll:
+
+    Poll system call can monitor an arbitrary number of file descriptors.
+    It uses an array of pollfd structures to represent the file descriptor sets, which is more efficient in terms of memory usage than select.
+    It is well-suited for applications that need to monitor a large number of file descriptors.
+    It can handle file descriptor more than FD_SETSIZE
