@@ -45,11 +45,13 @@ int main() {
         so input 123456789 it will only read 12345
         for string input hellotherecoco, it will read hellothere
     */
+    printf("enter a long digit, it will only take 1st 5 digit: \n");
     scanf("%5d", &d);
     printf("%d\n", d);
     
     while(getchar() != 10);       // this is to flush remaining digit on stdin before moving to next
 
+    printf("Enter a string of at least 10 charer long:\n");
     scanf("%10s", str);
     printf("%s\n", str);
 
@@ -65,10 +67,17 @@ int main() {
         %*[^,]  it will execude all upto , 
 
         %n record the scanf offset
+        %ms or %mi for dynamic allocation
     */ 
 
     sscanf("(abcd, 10)", "(%50[^,], %i %n", str, &d, &n);
     printf("%s; %i, offset: %i\n", str, d, n);
+
+    while(getchar() != 10);  //always clear the stdin before moving to next, comment this to test.
+    char *s;
+    printf("Input string: ");
+    scanf("%ms", &s);       //  here scanf will allocate memory for the pointer *s
+    printf("\n%s\n", s);
 
     return 0;
 
