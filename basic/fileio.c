@@ -5,6 +5,23 @@
 
 #define MAX_CHAR 10000
 
+
+
+/*
+    printf: Print formatted output to stdout.
+    scanf: Read formatted input from stdin.
+    getchar: Read a character from stdin.
+    putchar: Write a character to stdout.
+    getc: Read a character from a file.
+    putc: Write a character to a file.
+    sprintf: Write formatted data to a string.
+    sscanf: Read formatted data from a string.
+    fprintf: Write formatted data to a file.
+    fscanf: Read formatted data from a file.
+    fputs: Write a string to a file.
+    fgets: Read a string from a file.
+*/
+
 void usage() {
     printf("Usage: ./binary.out <filename>\n");
     exit(0);

@@ -21,6 +21,7 @@ int main(int argc, char *argv[]) {
         token = strtok(NULL, del);
     }
 
-    printf("%s\n", a);
+    // strtok modifies the original string s by replacing the delimiter with a null terminator ('\0') to split the string into tokens.
+    printf("%s\n", a[12]);
     return 0;
 }
