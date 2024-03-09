@@ -9,7 +9,8 @@ static keyword in c
     When a function is declared with a static keyword known as a static function. Its lifetime is throughout the program.
     
     Static local variable
-    When a local variable is declared with a static keyword, then it is known as a static local variable. The memory of a static local variable is valid throughout the program, but the scope of visibility of a variable is the same as the automatic local variables. However, when the function modifies the static local variable during the first function call, then this modified value will be available for the next function call also.
+    When a local variable is declared with a static keyword, then it is known as a static local variable. The memory of a static local variable is valid throughout the program,
+     but the scope of visibility of a variable is the same as the automatic local variables. However, when the function modifies the static local variable during the first function call, then this modified value will be available for the next function call also.
     if not initialized by default it will initialized as 0
 
     Static member variables

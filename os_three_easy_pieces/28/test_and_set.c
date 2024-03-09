@@ -14,7 +14,8 @@ performance: bad, spin lock waste cpu cycles of other waiting thread.
 #include<time.h>
 #include<pthread.h>
 #include<assert.h>
-#include<sys/syscall.h>
+#include <sys/syscall.h>
+
 
 static volatile int count = 0;
 
@@ -36,7 +37,7 @@ void init_lock(lock_t *lock) {
 
 void my_lock(lock_t *lock) {
     while(testandset(&lock->flag, 1) == 1) {
-        printf("I am going to sleep: %lu\n", syscall(SYS_gettid));
+        printf("I am going to sleep: %lu\n", syscall(SYS_gettid));  // system call is used to retrieve the thread ID of the calling thread
         sleep(1);          // sleep for 1 sec
     }
 }

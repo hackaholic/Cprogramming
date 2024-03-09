@@ -1,0 +1,59 @@
+compiling commands:
+
+gcc -g -std=c18 -Wall -o <outfile> <filename.c>
+-g  ->   include debugging information in the executable file
+
+
+gdb commands:
+
+gdb ./a.out
+
+r or run <arg1> <ar2> .... -> run the file ./a.out
+
+l or list ->  list some line of codes above and below Instruction pointer
+
+n or next -> run next line
+c or continue-> continue to end or another breakpoint
+
+print <variable> or p <variable> or p <expression> -> print value of variable or expression
+
+q or quit  -> quit gdb
+
+up -> peak up the call stack
+down -> peak down the call stack
+
+
+display <variable>  ->  display value of varibale for every command
+undisplay <variable_id>  -> stoping displaying specified variable identified by id 
+
+bt or backtrace -> give entire call stack trace
+
+step -> step into the function
+
+finish ->  finish the function call and stop
+
+watch -> watch point, detect change in variable and stop
+
+# set  breakpoint
+break <line|func_name>
+
+# unset breakpoint
+delete <breakpint_id>
+
+info breakpoints  or i b-> list all set breakpoints
+
+whatis <variable> -> get type of variable
+
+# track and record, so we can debug in reverse
+target record-full
+then use reverse-next or rn to debug in reverse
+
+reverse-step or rs
+reverse-continue
+
+set var <varibale>=value
+
+# set assembly flavor | get the assemby code
+set disassembly-flavor intel
+
+disas <function_name> or disassemble <function_name>

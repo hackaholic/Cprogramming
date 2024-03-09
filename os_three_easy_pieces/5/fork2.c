@@ -10,7 +10,7 @@ int main(int argc, char*argv[]) {
     for(int i=0;i<n;i++){
         fork();
     }
-    printf("Hello\n");
+    printf("Hello: pid: %i\n", getpid());
     while(wait(NULL) !=-1)
         continue;
 }
