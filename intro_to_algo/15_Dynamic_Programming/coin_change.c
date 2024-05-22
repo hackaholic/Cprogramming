@@ -23,7 +23,27 @@ int get_coin_change(int *a, int n, int sum) {
 }
 
 
-// using dynamic programming 2D array
+// using dynamic programming 2D array (tabulation) 
+
+int dp_coin_change(int *a, int n, int sum){
+    int tab[n+1][sum+1];
+    int i,j;
+    memset(tab, 0, sizeof(tab[0][0])*(n+1)*(sum+1));
+    tab[0][0] = 1;
+
+    for(i=1;i<=n;i++) {
+        for(j=0;j<=sum;j++) {
+            // including the coin
+            tab[i][j] += (j-a[i-1]>=0) ? tab[i][j - a[i-1]] : 0;
+
+            // excluding the coin
+            tab[i][j] += tab[i-1][j];
+        }
+    }
+
+    return tab[n][sum];
+
+}
 
 int dp_2d_get_coin_change(int *a, int n, int sum) {
     int i,j;
@@ -72,8 +92,11 @@ int dp_1d_get_coin_change(int *a, int n, int sum) {
 
 int main(int argc, char *argv[]) {
 
-    int arr[] = {1,2,3};
-    int sum = 4;
+    // int arr[]= {1, 2, 3};
+    // int sum = 4;
+
+    int arr[]= {2, 5, 3 ,6};
+    int sum = 10;
     int len = sizeof(arr)/sizeof(arr[0]);
 
     printf("%i\n", get_coin_change(arr, len, sum));
@@ -81,5 +104,8 @@ int main(int argc, char *argv[]) {
     printf("%i\n", dp_2d_get_coin_change(arr, len, sum));
 
     printf("%i\n", dp_1d_get_coin_change(arr, len, sum));
+
+    printf("%i\n", dp_coin_change(arr, len, sum));
+    return 0;
     return 0;
 }

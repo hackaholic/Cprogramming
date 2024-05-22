@@ -30,7 +30,7 @@ void max_subarray(int a[], int len) {
 }
 
 int main(int argc, char *argv[]) {
-    //int a[] = {-2, -5, 6, -2, -3, 1, 5, -6};
+    // int a[] = {-2, -5, 6, -2, -3, 1, 5, -6};
     int a[] = {13, -3, -25, 20, -3, -16, -23, 18, 20, -7, 12, -5, -22, 15, -4, 7};
 
     int len = sizeof(a)/sizeof(a[0]);

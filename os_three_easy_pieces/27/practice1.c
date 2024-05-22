@@ -72,14 +72,14 @@ void sig_handler(int sig) {
 int putVal() {
     int rand_val = rand() % 100;
     buffer[p_count] = rand_val;
-    p_count = p_count % MAX_BUFFER_SIZE + 1;
+    p_count = (p_count +1) % MAX_BUFFER_SIZE;
     count++;
     return rand_val;
 }
 
 int getVal () {
     int val = buffer[c_count];
-    c_count = c_count % MAX_BUFFER_SIZE + 1;
+    c_count = (c_count + 1) % MAX_BUFFER_SIZE;
     count--;
     return val;
 }
@@ -88,6 +88,7 @@ void *producer() {
     int val;
     while(keepRunning) {
         pthread_mutex_lock(&mutex);
+
         while(count == MAX_BUFFER_SIZE) {
             pthread_cond_wait(&empty, &mutex);
         }

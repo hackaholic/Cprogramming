@@ -41,6 +41,12 @@ void *consumer(void *arg) {
     pthread_mutex_lock(&lock);
     
     printf("Consumer: Contition wait ...\n");
+    /*
+    The pthread_cond_wait function can wake up spuriously, meaning it can return even if no signal has been sent to the condition variable. 
+    This behavior is part of the POSIX standard for condition variables and is meant to allow for more efficient implementation and to
+    handle certain edge cases.
+    A simple rule to remember with condition variable is always use while loop
+    */
     while(ready == 0) {
         pthread_cond_wait(&cond, &lock);
     }
