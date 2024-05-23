@@ -69,6 +69,28 @@ int lcs_top_up(char *s1, char *s2, int m, int n) {
         }
     }
 
+    i=m, j=n;
+    int index = t[m][n];
+    char lcs[index+1];
+
+    lcs[index] = '\0';
+
+    while(i>0 && j>0) {
+        if(s1[i-1] == s2[j-1]){
+            lcs[--index] = s1[i-1];
+            i--;
+            j--; 
+        }
+
+        else if(t[i-1][j] > t[i][j-1]){
+            i--;
+        }
+        else{
+            j--;
+        }
+    }
+    
+    printf("Longest common Sub Sequence %s\n", lcs);
     return t[m][n];
 }
 
