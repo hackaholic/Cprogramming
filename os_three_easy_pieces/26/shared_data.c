@@ -9,6 +9,7 @@
 
  run this with vagrind and see what error does it report, does it report for race condition
 
+ With tools like Helgrind, Valgrind can detect race conditions in multithreaded programs.
 
 */
 
